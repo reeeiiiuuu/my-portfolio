@@ -314,8 +314,8 @@ export default function App() {
                 <a href="https://github.com/reeeiiiuuu" target="_blank" rel="noreferrer">
                   GitHub
                 </a>
-                <a href="#" target="_blank" rel="noreferrer">
-                  LinkedIn
+                <a href="https://www.facebook.com/reinalyn.belen" target="_blank" rel="noreferrer">
+                  Facebook
                 </a>
                 <a
                   href={resume}
