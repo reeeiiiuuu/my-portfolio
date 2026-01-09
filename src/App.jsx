@@ -311,10 +311,10 @@ export default function App() {
             <div className="card">
               <h3>Links</h3>
               <div className="links">
-                <a href="#" target="_blank" rel="noreferrer">
+                <a href="https://github.com/reeeiiiuuu" target="_blank" rel="noreferrer">
                   GitHub
                 </a>
-                <a href="https://github.com/reeeiiiuuu" target="_blank" rel="noreferrer">
+                <a href="#" target="_blank" rel="noreferrer">
                   LinkedIn
                 </a>
                 <a
