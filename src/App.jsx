@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import myPhoto from "./assets/picture.png";
 import logo from "./assets/rei-logo.png";
+import resume from "./assets/RESUME.pdf"
 import "./App.css";
 
 
@@ -316,24 +317,22 @@ export default function App() {
                 <a href="#" target="_blank" rel="noreferrer">
                   LinkedIn
                 </a>
-                <a href="#" target="_blank" rel="noreferrer">
+                <a
+                  href={resume}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Resume
                 </a>
               </div>
 
               <div className="mini">
                 <div className="miniTitle">Email</div>
-                <div className="miniValue">you@email.com</div>
+                <div className="miniValue">reynalynmorales24@gmail.com</div>
               </div>
             </div>
           </div>
         </section>
-
-        <footer className="footer">
-          <span>© {year} YourName</span>
-          <span className="footDot">•</span>
-          <span>Built with clean UI + modern motion</span>
-        </footer>
       </main>
 
       {/* MODAL */}
