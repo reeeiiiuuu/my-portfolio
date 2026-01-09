@@ -305,7 +305,7 @@ export default function App() {
                   Send
                 </button>
               </form>
-              <p className="formNote">Tip: connect this to EmailJS or Formspree later.</p>
+              <p>@this form does not send tru email yet@</p>
             </div>
 
             <div className="card">
