@@ -19,24 +19,25 @@ const getProjectImages = (folder) =>
 const PROJECTS = [
   {
     id: 1,
-    title: "Dance Studio",
-    desc: "Premium landing page with modern layout, motion, and responsive design.",
-    tech: ["Java", "CSS"],
+    title: "Silanganan Dance Studio",
+    desc: "A registration website for a dance studio that allows dancers to sign up easily",
+    tech: ["Java", "CSS", "SQL"],
     featured: true,
     images: getProjectImages("project3"),
   },
   {
     id: 2,
     title: "Claudy Nails",
-    desc: "Clean dashboard interface with cards, filters, and sleek interactions.",
+    desc: "An online appointment system that allows nail technicians to track schedules and manage client appointments",
     tech: ["HTML", "CSS", "Javascript", "SQL"],
     images: getProjectImages("project4"),
   },
   {
     id: 3,
     title: "MiCasa Living",
-    desc: "Typography-driven portfolio with glass UI and micro-interactions.",
+    desc: "Real-estate website for viewing properties and managing agent and listing information",
     tech: ["HTML", "CSS", "JavaScript", "SQL"],
+    featured: true,
     images: getProjectImages("project5"),
   },
 ];
@@ -139,11 +140,11 @@ export default function App() {
             <div className="metrics">
               <div className="metric">
                 <div className="metricNum">Fast</div>
-                <div className="metricLabel">Performance-first</div>
+                <div className="metricLabel">Optimize and Responsive</div>
               </div>
               <div className="metric">
                 <div className="metricNum">UI</div>
-                <div className="metricLabel">Design-driven</div>
+                <div className="metricLabel">User-focus Design</div>
               </div>
             </div>
           </div>
@@ -158,7 +159,6 @@ export default function App() {
               </div>
 
               <div className="chips">
-                <span className="chip">React</span>
                 <span className="chip">UI/UX</span>
                 <span className="chip">CSS</span>
                 <span className="chip">JavaScript</span>
@@ -171,7 +171,6 @@ export default function App() {
         <section id="about" className="section">
           <div className="sectionHead">
             <h2>About</h2>
-            <p>I design and build interfaces with clear hierarchy, crisp details, and smooth motion.</p>
           </div>
 
           <div className="aboutGrid">
@@ -184,7 +183,6 @@ export default function App() {
 
               <div className="tags">
                 <span className="tag">Responsive UI</span>
-                <span className="tag">Animations</span>
                 <span className="tag">Clean Code</span>
                 <span className="tag">Accessibility</span>
               </div>
@@ -208,17 +206,18 @@ export default function App() {
                 <li>
                   <span>Learning</span>
                   <b>Next.js</b>
+                  <b>Python</b>
                 </li>
               </ul>
             </div>
 
             <div className="card">
-              <h3>What you get</h3>
+              <h3>Hobbies</h3>
               <ul className="checklist">
-                <li>Pixel-clean layout</li>
-                <li>Modern interactions</li>
-                <li>Mobile-first design</li>
-                <li>Fast loading pages</li>
+                <li>Basketball</li>
+                <li>Singing</li>
+                <li>Playing Instrument</li>
+                <li>Sleeping</li>
               </ul>
             </div>
           </div>
@@ -253,7 +252,6 @@ export default function App() {
         <section id="projects" className="section">
           <div className="sectionHead">
             <h2>Projects</h2>
-            <p>Selected work — designed for clarity and smooth experience.</p>
           </div>
 
           <div className="projectsGrid">
