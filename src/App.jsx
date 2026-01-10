@@ -41,19 +41,71 @@ const PROJECTS = [
   },
   {
     id: 2,
-    title: "Dashboard UI",
-    desc: "Clean dashboard interface with cards, filters, and sleek interactions.",
-    tech: ["React", "CSS"],
-    live: "#",
-    code: "#",
+    title: "Claudy Nails",
+    desc: "",
+    tech: ["HTML", "CSS" ,"Javascript"],
+    image: [
+      '${import.meta.env.BASE_URL}projects/project4/1.png',
+      '${import.meta.env.BASE_URL}projects/project4/2.png',
+      '${import.meta.env.BASE_URL}projects/project4/3.png',
+      '${import.meta.env.BASE_URL}projects/project4/4.png',
+      '${import.meta.env.BASE_URL}projects/project4/5.png',
+      '${import.meta.env.BASE_URL}projects/project4/6.png',
+      '${import.meta.env.BASE_URL}projects/project4/7.png',
+      '${import.meta.env.BASE_URL}projects/project4/8.png',
+      '${import.meta.env.BASE_URL}projects/project4/9.png',
+      '${import.meta.env.BASE_URL}projects/project4/10.png',
+      '${import.meta.env.BASE_URL}projects/project4/11.png',
+      '${import.meta.env.BASE_URL}projects/project4/12.png',
+      '${import.meta.env.BASE_URL}projects/project4/13.png',
+      '${import.meta.env.BASE_URL}projects/project4/14.png',
+      '${import.meta.env.BASE_URL}projects/project4/15.png',
+      '${import.meta.env.BASE_URL}projects/project4/16.png',
+      '${import.meta.env.BASE_URL}projects/project4/17.png',
+      '${import.meta.env.BASE_URL}projects/project4/18.png',
+    ]
   },
   {
     id: 3,
-    title: "Portfolio Concept",
+    title: "MiCasa Living",
     desc: "Typography-driven portfolio with glass UI and micro-interactions.",
     tech: ["HTML", "CSS", "JS"],
-    live: "#",
-    code: "#",
+    featured: true,
+    image: [
+      '${import.meta.env.BASE_URL}projects/project5/1.png',
+      '${import.meta.env.BASE_URL}projects/project5/2.png',
+      '${import.meta.env.BASE_URL}projects/project5/3.png',
+      '${import.meta.env.BASE_URL}projects/project5/4.png',
+      '${import.meta.env.BASE_URL}projects/project5/5.png',
+      '${import.meta.env.BASE_URL}projects/project5/6.png',
+      '${import.meta.env.BASE_URL}projects/project5/7.png',
+      '${import.meta.env.BASE_URL}projects/project5/8.png',
+      '${import.meta.env.BASE_URL}projects/project5/9.png',
+      '${import.meta.env.BASE_URL}projects/project5/10.png',
+      '${import.meta.env.BASE_URL}projects/project5/11.png',
+      '${import.meta.env.BASE_URL}projects/project5/12.png',
+      '${import.meta.env.BASE_URL}projects/project5/13.png',
+      '${import.meta.env.BASE_URL}projects/project5/14.png',
+      '${import.meta.env.BASE_URL}projects/project5/15.png',
+      '${import.meta.env.BASE_URL}projects/project5/16.png',
+      '${import.meta.env.BASE_URL}projects/project5/17.png',
+      '${import.meta.env.BASE_URL}projects/project5/18.png',
+      '${import.meta.env.BASE_URL}projects/project5/19.png',
+      '${import.meta.env.BASE_URL}projects/project5/20.png',
+      '${import.meta.env.BASE_URL}projects/project5/21.png',
+      '${import.meta.env.BASE_URL}projects/project5/22.png',
+      '${import.meta.env.BASE_URL}projects/project5/23.png',
+      '${import.meta.env.BASE_URL}projects/project5/24.png',
+      '${import.meta.env.BASE_URL}projects/project5/25.png',
+      '${import.meta.env.BASE_URL}projects/project5/26.png',
+      '${import.meta.env.BASE_URL}projects/project5/27.png',
+      '${import.meta.env.BASE_URL}projects/project5/28.png',
+      '${import.meta.env.BASE_URL}projects/project5/29.png',
+      '${import.meta.env.BASE_URL}projects/project5/30.png',
+      '${import.meta.env.BASE_URL}projects/project5/31.png',
+      '${import.meta.env.BASE_URL}projects/project5/32.png',
+      '${import.meta.env.BASE_URL}projects/project5/33.png',
+    ]
   },
 ];
 
@@ -295,16 +347,16 @@ export default function App() {
                   ))}
                 </div>
 
-                <div className="projectActions" onClick={(e) => e.stopPropagation()}>
-                  <button className="btn btnSmall" onClick={() => setActiveProject(p)}>
-                    Details
+                <div
+                  className="projectActions"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <button
+                    className="btn btnSmall"
+                    onClick={() => setActiveProject(p)}
+                  >
+                    View Screenshots
                   </button>
-                  <a className="btn btnSmall btnGhost" href={p.live} target="_blank" rel="noreferrer">
-                    Live
-                  </a>
-                  <a className="btn btnSmall btnGhost" href={p.code} target="_blank" rel="noreferrer">
-                    Code
-                  </a>
                 </div>
               </article>
             ))}
@@ -365,8 +417,17 @@ export default function App() {
         aria-hidden={!activeProject}
         onClick={() => setActiveProject(null)}
       >
-        <div className="modalPanel" role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
-          <button className="modalClose" aria-label="Close" onClick={() => setActiveProject(null)}>
+        <div
+          className="modalPanel"
+          role="dialog"
+          aria-modal="true"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            className="modalClose"
+            aria-label="Close"
+            onClick={() => setActiveProject(null)}
+          >
             ✕
           </button>
 
@@ -374,11 +435,28 @@ export default function App() {
             <>
               <h3 className="modalTitle">{activeProject.title}</h3>
               <p className="modalDesc">{activeProject.desc}</p>
+
               <div className="modalTech">
                 {activeProject.tech.map((t) => (
                   <span key={t}>{t}</span>
                 ))}
               </div>
+
+              {activeProject.images?.length ? (
+                <div className="modalGallery">
+                  {activeProject.images.map((src, i) => (
+                    <img
+                      key={src}
+                      className="modalImg"
+                      src={src}
+                      alt={`${activeProject.title} screenshot ${i + 1}`}
+                      loading="lazy"
+                    />
+                  ))}
+                </div>
+              ) : (
+                <p className="modalHint">No screenshots added yet.</p>
+              )}
             </>
           )}
         </div>
