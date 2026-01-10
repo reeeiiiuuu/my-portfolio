@@ -13,7 +13,7 @@ const PROJECTS = [
     tech: ["Java", "CSS", "UI Motion"],
     featured: true,
     image: [
-      `${import.meta.env.BASE_URL}projects/projects3/1.jpg`,
+      "/projects/project3/1.jpg",
       `${import.meta.env.BASE_URL}projects/projects3/2.jpg`,
       `${import.meta.env.BASE_URL}projects/projects3/3.jpg`,
       `${import.meta.env.BASE_URL}projects/projects3/4.jpg`,
@@ -37,7 +37,7 @@ const PROJECTS = [
       `${import.meta.env.BASE_URL}projects/projects3/22.jpg`,
       `${import.meta.env.BASE_URL}projects/projects3/23.jpg`,
       `${import.meta.env.BASE_URL}projects/projects3/24.jpg`,
-    ]
+    ],
   },
   {
     id: 2,
