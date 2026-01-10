@@ -21,6 +21,7 @@
   --max: 1120px;
 }
 
+
 @font-face {
   font-family: Mustika;
   src: url(./assets/fonts/Mustika-Alternate.otf);
@@ -52,9 +53,8 @@ a {
 }
 .blob {
   position: absolute;
-  width: 520px;
-  height: 520px;
-  filter: blur(40px);
+  width: 420px;
+  height: 420px;
   opacity: 0.25;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%);
@@ -647,12 +647,18 @@ a {
   justify-content: center;
   padding: 20px;
   z-index: 2000;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms var(--ease);
 }
 .modal.open {
   display: flex;
+  opacity: 1;
+  pointer-events: auto;
 }
 .modalPanel {
-  width: min(680px, 96vw);
+  width: min(100%, 1000px);
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 20px;
@@ -662,6 +668,13 @@ a {
   position: relative;
   max-height: 90vh;
   -webkit-overflow-scrolling: touch;
+
+  transform: translateY(10px) scale(0.98);
+  opacity: 0;
+}
+.modal.open .modalPanel{
+  transform: translateY(0) scale(1);
+  opacity: 1;
 }
 .modalClose {
   position: absolute;
@@ -701,18 +714,21 @@ a {
 }
 
 .modalGallery {
-  margin-top: 16px;
+  margin-top: 14px;
+  flex: 1;
   max-height: 65vh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding-right: 8px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
 }
 
 .modalImg {
   width: 100%;
-  max-width: 900px;
+  max-width: 100%;
+  height: auto;
   margin: 0 auto;
   display: block;
   border-radius: 14px;
@@ -779,6 +795,18 @@ a {
     animation: slideDown 0.25s ease;
   }
 
+  @media (max-width: 600px) {
+  .modalPanel {
+    width: 92vw;
+    max-height: 92vh;
+    padding: 14px;
+  }
+
+  .modalImg {
+    max-width: 100%;
+  }
+}
+
   @keyframes slideDown {
   from {
     opacity: 0;
@@ -802,5 +830,68 @@ a {
 
   .navLinks a:hover {
     background: rgba(255,255,255,0.08);
+  }
+}
+
+/* ===== BLOBS: MOVE + COLOR SHIFT (FINAL) ===== */
+
+.blob {
+  filter: blur(60px);
+  opacity: 0.45;
+  will-change: transform, background, box-shadow;
+}
+
+/* Movement */
+@keyframes blobDrift {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(140px, -90px) scale(1.2); }
+  50%  { transform: translate(-120px, 80px) scale(1.1); }
+  75%  { transform: translate(100px, 140px) scale(1.25); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* Color shifting glow */
+@keyframes glowShift {
+  0% {
+    background: rgba(255, 120, 200, 0.55); /* pink */
+    box-shadow: 0 0 160px rgba(255, 120, 200, 0.65);
+  }
+  25% {
+    background: rgba(180, 120, 255, 0.55); /* purple */
+    box-shadow: 0 0 180px rgba(180, 120, 255, 0.65);
+  }
+  50% {
+    background: rgba(120, 150, 255, 0.55); /* blue */
+    box-shadow: 0 0 170px rgba(120, 150, 255, 0.65);
+  }
+  75% {
+    background: rgba(120, 220, 200, 0.55); /* teal */
+    box-shadow: 0 0 175px rgba(120, 220, 200, 0.65);
+  }
+  100% {
+    background: rgba(255, 120, 200, 0.55); /* back to pink */
+    box-shadow: 0 0 160px rgba(255, 120, 200, 0.65);
+  }
+}
+
+/* Apply BOTH animations */
+.b1 {
+  animation: blobDrift 16s ease-in-out infinite, glowShift 16s ease-in-out infinite;
+}
+
+.b2 {
+  animation: blobDrift 18s ease-in-out infinite, glowShift 18s ease-in-out infinite;
+  animation-delay: -2s, -4s;
+}
+
+.b3 {
+  animation: blobDrift 20s ease-in-out infinite, glowShift 20s ease-in-out infinite;
+  animation-delay: -4s, -7s;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .b1, .b2, .b3 {
+    animation: none !important;
   }
 }
