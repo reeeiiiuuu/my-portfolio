@@ -1,111 +1,43 @@
 import { useEffect, useMemo, useState } from "react";
 import myPhoto from "./assets/picture.png";
 import logo from "./assets/rei-logo.png";
-import resume from "./assets/RESUME.pdf"
+import resume from "./assets/RESUME.pdf";
 import "./App.css";
 
+// Auto-load all project images
+const projectImages = import.meta.glob(
+  "./assets/projects/*/*.{jpg,png,jpeg}",
+  { eager: true, import: "default" }
+);
+
+// Helper to get images by folder name
+const getProjectImages = (folder) =>
+  Object.entries(projectImages)
+    .filter(([path]) => path.includes(`/projects/${folder}/`))
+    .map(([, img]) => img);
 
 const PROJECTS = [
   {
     id: 1,
     title: "Dance Studio",
-    desc: "",
-    tech: ["Java", "CSS", "UI Motion"],
+    desc: "Premium landing page with modern layout, motion, and responsive design.",
+    tech: ["Java", "CSS"],
     featured: true,
-    image: [
-      "/projects/project3/1.jpg",
-      `${import.meta.env.BASE_URL}projects/projects3/2.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/3.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/4.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/5.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/6.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/7.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/8.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/9.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/10.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/11.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/12.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/13.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/14.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/15.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/16.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/17.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/18.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/19.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/20.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/21.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/22.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/23.jpg`,
-      `${import.meta.env.BASE_URL}projects/projects3/24.jpg`,
-    ],
+    images: getProjectImages("project3"),
   },
   {
     id: 2,
     title: "Claudy Nails",
-    desc: "",
-    tech: ["HTML", "CSS" ,"Javascript"],
-    image: [
-      '${import.meta.env.BASE_URL}projects/project4/1.png',
-      '${import.meta.env.BASE_URL}projects/project4/2.png',
-      '${import.meta.env.BASE_URL}projects/project4/3.png',
-      '${import.meta.env.BASE_URL}projects/project4/4.png',
-      '${import.meta.env.BASE_URL}projects/project4/5.png',
-      '${import.meta.env.BASE_URL}projects/project4/6.png',
-      '${import.meta.env.BASE_URL}projects/project4/7.png',
-      '${import.meta.env.BASE_URL}projects/project4/8.png',
-      '${import.meta.env.BASE_URL}projects/project4/9.png',
-      '${import.meta.env.BASE_URL}projects/project4/10.png',
-      '${import.meta.env.BASE_URL}projects/project4/11.png',
-      '${import.meta.env.BASE_URL}projects/project4/12.png',
-      '${import.meta.env.BASE_URL}projects/project4/13.png',
-      '${import.meta.env.BASE_URL}projects/project4/14.png',
-      '${import.meta.env.BASE_URL}projects/project4/15.png',
-      '${import.meta.env.BASE_URL}projects/project4/16.png',
-      '${import.meta.env.BASE_URL}projects/project4/17.png',
-      '${import.meta.env.BASE_URL}projects/project4/18.png',
-    ]
+    desc: "Clean dashboard interface with cards, filters, and sleek interactions.",
+    tech: ["HTML", "CSS", "Javascript", "SQL"],
+    images: getProjectImages("project4"),
   },
   {
     id: 3,
     title: "MiCasa Living",
     desc: "Typography-driven portfolio with glass UI and micro-interactions.",
-    tech: ["HTML", "CSS", "JS"],
-    featured: true,
-    image: [
-      '${import.meta.env.BASE_URL}projects/project5/1.png',
-      '${import.meta.env.BASE_URL}projects/project5/2.png',
-      '${import.meta.env.BASE_URL}projects/project5/3.png',
-      '${import.meta.env.BASE_URL}projects/project5/4.png',
-      '${import.meta.env.BASE_URL}projects/project5/5.png',
-      '${import.meta.env.BASE_URL}projects/project5/6.png',
-      '${import.meta.env.BASE_URL}projects/project5/7.png',
-      '${import.meta.env.BASE_URL}projects/project5/8.png',
-      '${import.meta.env.BASE_URL}projects/project5/9.png',
-      '${import.meta.env.BASE_URL}projects/project5/10.png',
-      '${import.meta.env.BASE_URL}projects/project5/11.png',
-      '${import.meta.env.BASE_URL}projects/project5/12.png',
-      '${import.meta.env.BASE_URL}projects/project5/13.png',
-      '${import.meta.env.BASE_URL}projects/project5/14.png',
-      '${import.meta.env.BASE_URL}projects/project5/15.png',
-      '${import.meta.env.BASE_URL}projects/project5/16.png',
-      '${import.meta.env.BASE_URL}projects/project5/17.png',
-      '${import.meta.env.BASE_URL}projects/project5/18.png',
-      '${import.meta.env.BASE_URL}projects/project5/19.png',
-      '${import.meta.env.BASE_URL}projects/project5/20.png',
-      '${import.meta.env.BASE_URL}projects/project5/21.png',
-      '${import.meta.env.BASE_URL}projects/project5/22.png',
-      '${import.meta.env.BASE_URL}projects/project5/23.png',
-      '${import.meta.env.BASE_URL}projects/project5/24.png',
-      '${import.meta.env.BASE_URL}projects/project5/25.png',
-      '${import.meta.env.BASE_URL}projects/project5/26.png',
-      '${import.meta.env.BASE_URL}projects/project5/27.png',
-      '${import.meta.env.BASE_URL}projects/project5/28.png',
-      '${import.meta.env.BASE_URL}projects/project5/29.png',
-      '${import.meta.env.BASE_URL}projects/project5/30.png',
-      '${import.meta.env.BASE_URL}projects/project5/31.png',
-      '${import.meta.env.BASE_URL}projects/project5/32.png',
-      '${import.meta.env.BASE_URL}projects/project5/33.png',
-    ]
+    tech: ["HTML", "CSS", "JavaScript", "SQL"],
+    images: getProjectImages("project5"),
   },
 ];
 
@@ -191,7 +123,8 @@ export default function App() {
             </h1>
 
             <p className="subtitle">
-              Designing and building interfaces people actually enjoy using.
+              <i>A student passionate about learning web development and UI design, 
+              with a focus on clean layout and user-friendly experiences</i>
             </p>
 
             <div className="heroActions">
@@ -367,7 +300,7 @@ export default function App() {
         <section id="contact" className="section">
           <div className="sectionHead">
             <h2>Contact</h2>
-            <p>Let’s build something clean, fast, and modern.</p>
+            <p><i>Let's build something great together. Get in touch below</i></p>
           </div>
 
           <div className="contactGrid">
